@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Cl-html5-parser by copyleft</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Cl-html5-parser</h1>
+        <h2>HTML5 parser for Common Lisp</h2>
+        <a href="https://github.com/copyleft/cl-html5-parser" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a name="cl-html5-parser-html5-parser-for-common-lisp" class="anchor" href="#cl-html5-parser-html5-parser-for-common-lisp"><span class="octicon octicon-link"></span></a>cl-html5-parser: HTML5 parser for Common Lisp</h1>
+
+<h2>
+<a name="abstract" class="anchor" href="#abstract"><span class="octicon octicon-link"></span></a>Abstract</h2>
+
+<p>cl-html5-parser is a HTML5 parser for Common Lisp with the following features:</p>
+
+<ul>
+<li>It is a port of the Python library <a href="http://code.google.com/p/html5lib/%5Bhtml5lib%5D">http://code.google.com/p/html5lib/[html5lib]</a>.</li>
+<li>It passes all relevant tests from html5lib.</li>
+<li>It is not tied to a specific DOM implementation.</li>
+</ul><h2>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
+
+<ul>
+<li>SBCL or ECL.</li>
+<li>CL-PPCRE and FLEXI-STREAMS.</li>
+</ul><p>Might work with CLISP, ABCL and Clozure CL, but many of the tests don't pass there.</p>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Parsing</p>
+
+<pre><code>
+Parsing functions are in the package HTML5-PARSER.
+
+~_f_~
+*parse-html5* _source &amp;key encoding strictp
+              =&gt; document, errors_
+
+Parse an HTML document from source. Source can be a string, a pathname
+or a stream. When parsing from a stream encoding detection is not
+supported, encoding must be supplied via the encoding keyword
+parameter.
+
+When strictp is true, parsing stops on first error.
+
+Returns two values. The primary value is the document node. The
+secondary value is a list of errors found during parsing. The format
+of this list is subject to change.
+
+~_f_~
+*parse-html5-fragment* _source &amp;key container encoding strictp as-xmls
+                       =&gt; document-fragment, errors_
+
+Parses a fragment of HTML. Container sets the context, defaults to
+"div". Returns a document-fragment node. For the other parameters see
++PARSE-HTML5+.
+
+Example
+</code></pre>
+
+<hr><p>(html5-parser:node-to-xmls (html5-parser:parse-html5-fragment "Parse <i>some</i> HTML"))</p>
+
+<h2>
+<a name="-parse--i-nil-some--html" class="anchor" href="#-parse--i-nil-some--html"><span class="octicon octicon-link"></span></a>==&gt; ("Parse " ("i" NIL "some") " HTML")</h2>
+
+<p>The DOM</p>
+
+<pre><code>
+Parsing HTML5 is not possible without a
+http://en.wikipedia.org/wiki/Document_Object_Model[DOM]. cl-html5-parser
+defines a minimal DOM implementation for this task. Functions for
+traversing documents are exported by the HTML5-PARSER package.
+
+Converting to XMLS
+</code></pre>
+
+<p>~<em>f</em>~
+<em>html5-parser:node-to-xmls</em> <em>node &amp;optional include-namespace-p
+                            =&gt; list</em></p>
+
+<p>Converts a node into a simple
+<a href="http://common-lisp.net/project/xmls/%5BXMLS%5D-like">http://common-lisp.net/project/xmls/[XMLS]-like</a> list structure.
+If node is a document fragement a list of XMLS nodes a returned. In
+all other cases a single XMLS node is returned.</p>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>This library is available under the
+<a href="http://www.gnu.org/licenses/lgpl.html%5BGNU">http://www.gnu.org/licenses/lgpl.html[GNU</a> Lesser General Public License v3.0].</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/copyleft/cl-html5-parser/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/copyleft/cl-html5-parser/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/copyleft/cl-html5-parser"></a> is maintained by <a href="https://github.com/copyleft">copyleft</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
